@@ -27,6 +27,8 @@ The page started as `home.html` in the private `adsn-auction-site` project (Verc
 
 ## DNS (GoDaddy, theadsn.com)
 
+The domain is in **James Borow's GoDaddy account**; Daniel reaches it through delegate access ("Daniel logged in as: James Borow"). Every DNS save asks for a texted code (phone ending 6941). The domain is verified for GitHub Pages on Daniel's account via TXT `_github-pages-challenge-ddruger` (keep it; it stops other GitHub accounts from claiming theadsn.com). Switched to GitHub on 2026-10-21.
+
 - Website: `A @` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `CNAME www` → `ddruger.github.io`.
 - Email (ImprovMX): `MX` mx1.improvmx.com (10) and mx2.improvmx.com (20), plus the SPF/verification TXT records. Never touch these when changing the website.
 - Before the move (Oct 21, 2026) the site was on Netlify: `A @` → 75.2.60.5, `CNAME www` → theadsn.netlify.app. Switching those two back restores the old site.
