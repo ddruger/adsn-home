@@ -87,7 +87,7 @@ section.block{padding:72px 0 0;scroll-margin-top:64px}
 .section-head .sub{margin:0}
 
 /* Newsletter form (beehiiv embed, or a button until the embed code is added) */
-.nl-form{max-width:480px}
+.nl-form{max-width:480px;min-height:47px}
 .nl-form iframe{display:block;width:100%;max-width:100%;border:0;background:transparent;margin:0}
 .nl-note{font-size:13px;color:var(--muted);margin:10px 0 0}
 
@@ -221,7 +221,7 @@ footer a{color:var(--soft)}
       <p class="eyebrow red">The ESPN of big tech</p>
       <h1><span class="l">Big tech, advertising,</span> <span class="l l2">and AI, every week.</span></h1>
       <p class="lede">ADSN is a media network that includes a weekly live show, original shows, newsletter, and social media following the biggest headlines and people on the move, that focuses on big tech, advertising, and AI.</p>
-      <div class="nl-form" data-height="60"></div>
+      <div class="nl-form"></div>
     </div>
     <div class="hero-right" id="latest">
       <h2 class="vhead"><i aria-hidden="true"></i>Watch airing on ADSN</h2>
@@ -353,7 +353,7 @@ footer a{color:var(--soft)}
           <li>What we're reading and arguing about this week</li>
           <li>First word on new shows, guests, and events</li>
         </ul>
-        <div class="nl-form" data-height="60"></div>
+        <div class="nl-form"></div>
       </div>
       <div class="cta-card">
         <h2>Watch or listen anywhere</h2>
@@ -407,9 +407,9 @@ footer a{color:var(--soft)}
     { id: "ASEYVgCY1YM", title: "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch", published: "2026-10-20T13:00:15+00:00" },
     { id: "_dog0tGGiF8", title: "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity | THE RUNDOWN", published: "2026-10-16T13:00:32+00:00" },
   ];
-  // beehiiv subscribe form. Paste the form's link from beehiiv (Grow → Subscribe forms → Embed:
-  // the src="https://subscribe-forms.beehiiv.com/…" part). Until then, each slot shows a Subscribe button.
-  const BEEHIIV_FORM_SRC = "";
+  // beehiiv subscribe form (Grow → Subscribe forms → embed code: the data-beehiiv-form value).
+  // Empty shows a Subscribe button in each slot instead.
+  const BEEHIIV_FORM_ID = "fd0a0f67-9558-4ea3-8ab6-b22f127ab1c7";
   const $ = id => document.getElementById(id);
   const showName = t => /rundown/i.test(t) ? "The Rundown" : /30 minutes/i.test(t) ? "30 Minutes" : /ladies who launch/i.test(t) ? "Ladies Who Launch" : /no permission/i.test(t) ? "No Permission" : "ADSN";
   const embed = (id, title, sound) => {
@@ -432,11 +432,12 @@ footer a{color:var(--soft)}
 
   /* ---------- Newsletter forms ---------- */
   document.querySelectorAll(".nl-form").forEach(slot => {
-    if (BEEHIIV_FORM_SRC) {
-      const f = document.createElement("iframe");
-      f.src = BEEHIIV_FORM_SRC; f.className = "beehiiv-embed"; f.title = "Subscribe to the ADSN newsletter";
-      f.setAttribute("data-test-id", "beehiiv-embed"); f.scrolling = "no"; f.style.height = (slot.dataset.height || 60) + "px";
-      slot.replaceChildren(f);
+    if (BEEHIIV_FORM_ID) {
+      // beehiiv's loader draws the form where its script tag sits.
+      const sc = document.createElement("script");
+      sc.async = true; sc.src = "https://subscribe-forms.beehiiv.com/v3/loader.js";
+      sc.setAttribute("data-beehiiv-form", BEEHIIV_FORM_ID);
+      slot.replaceChildren(sc);
     } else {
       const a = document.createElement("a"); a.className = "btn"; a.textContent = "Subscribe to the newsletter";
       a.href = "https://adsn.beehiiv.com/subscribe"; a.target = "_blank"; a.rel = "noopener";
