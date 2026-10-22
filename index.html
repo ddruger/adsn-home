@@ -7,11 +7,12 @@
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="ADSN is a show and newsletter about ads, media, and big tech, hosted by James Borow and Daniel Druger. Watch the latest episode and follow along on X and LinkedIn.">
+<meta name="description" content="ADSN is a media network with a weekly live show, original shows, a newsletter, and social media covering big tech, advertising, and AI. Hosted by James Borow and Daniel Druger.">
 <script>try{var t=new URLSearchParams(location.search).get("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 <style>
 :root{
   --red:#DC2626;--blue:#2563EB;--blue-2:#93C5FD;
@@ -60,25 +61,35 @@ a{color:inherit}
 @media (max-width:620px){.topnav>a:not(.pill){display:none}}
 
 /* Hero */
-.hero{background:var(--hero-bg),var(--bg);padding:52px 0 56px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px}
-@media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
-.lede{color:var(--soft);max-width:54ch;margin:0 0 24px;font-size:18px}
+.hero{background:var(--hero-bg),var(--bg);padding:56px 0 60px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
+@media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:36px}}
+.hero h1{font-size:clamp(34px,3.9vw,48px);line-height:1.04;letter-spacing:-.03em;max-width:none;margin:0 0 18px}
+.hero h1 .l{display:block}
+.hero h1 .l2{color:var(--red)}
+@media (max-width:420px){.hero h1 .l{display:inline}}
+.lede{color:var(--soft);max-width:50ch;margin:0 0 26px;font-size:17px;line-height:1.6}
 .ctas{display:flex;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:14px 18px;font:700 16px/1 var(--display);letter-spacing:-.01em;background:var(--red);color:#fff;cursor:pointer;text-decoration:none;transition:filter .15s,transform .05s}
 .btn:hover{filter:brightness(1.1)}.btn:active{transform:translateY(1px)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2)}
 .btn.ghost:hover{background:var(--surface-2);filter:none}
 .btn svg{width:18px;height:18px;flex:none}
-.hero-grid{align-items:center}
-.lede b{color:var(--ink);font-weight:600}
 .hero-right{min-width:0;scroll-margin-top:80px}
-.vhead{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em;margin:0 0 12px}
+.vhead{display:flex;align-items:center;gap:10px;font-size:clamp(20px,2vw,24px);letter-spacing:-.02em;margin:0 0 12px}
+.vhead i{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(220,38,38,.55);animation:pulse 1.8s infinite;flex:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
+@media (prefers-reduced-motion:reduce){.vhead i{animation:none}}
 .hero-video{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--stage-shadow)}
 
 section.block{padding:72px 0 0;scroll-margin-top:64px}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
 .section-head .sub{margin:0}
+
+/* Newsletter form (beehiiv embed, or a button until the embed code is added) */
+.nl-form{max-width:480px}
+.nl-form iframe{display:block;width:100%;max-width:100%;border:0;background:transparent;margin:0}
+.nl-note{font-size:13px;color:var(--muted);margin:10px 0 0}
 
 /* Latest episode */
 .vplayer{position:relative;aspect-ratio:16/9;background:#000}
@@ -92,15 +103,14 @@ section.block{padding:72px 0 0;scroll-margin-top:64px}
 .vinfo{padding:16px 18px 18px}
 .vtag{display:inline-block;font:600 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
 .vinfo h3{font-size:clamp(19px,2.2vw,24px);letter-spacing:-.02em}
-.vlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-@media (max-width:880px){.vlist{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.vlist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:10px;width:100%;border-radius:8px}
-.vlist button:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
-.vlist img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block;background:#000}
+.vlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:880px){.vlist{grid-template-columns:minmax(0,1fr)}}
+.vlist li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0}
+.vlist .vplay{width:56px;height:56px}
+.vlist .vplay svg{width:22px;height:22px}
+.vcap{padding:12px 14px 14px}
+.vcap .vtag{margin-bottom:6px}
 .vlist b{font:700 15px/1.3 var(--display);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.vlist small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-.vlist button:hover b{text-decoration:underline;text-underline-offset:3px}
-.vlist li.on b{color:var(--red)}
 
 /* Watched by */
 .watchers{padding:44px 0 0;text-align:center}
@@ -154,7 +164,7 @@ a.show:hover{border-color:var(--ink)}
 .guests strong{display:block;font:700 17px/1.25 var(--display)}
 .guests span{color:var(--muted);font-size:14px}
 @media (max-width:480px){.guests{gap:0 16px}.guests strong{font-size:15px}.guests span{font-size:13px;line-height:1.35;display:block}}
-.partners{margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+.partners{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
 .partners p{margin:0 0 18px}
 .plogos{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(18px,2.6vw,36px)}
 .plogos img{flex:none;height:clamp(15px,2vw,24px);width:auto;filter:var(--logo-filter);opacity:.78;transition:opacity .15s}
@@ -172,27 +182,27 @@ a.show:hover{border-color:var(--ink)}
 .cta-card p{margin:0 0 20px;color:var(--soft);max-width:52ch}
 .platforms{display:flex;gap:10px;flex-wrap:wrap}
 .platforms .btn{padding:12px 14px;font-size:15px}
+.plat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:420px){.plat{grid-template-columns:1fr}}
+.plat a{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--line-2);border-radius:var(--r);text-decoration:none;font:700 15px/1.2 var(--display);transition:border-color .15s,background .15s}
+@media (max-width:420px){.plat a{flex-direction:row;align-items:center}}
+.plat a:hover{border-color:var(--ink);background:var(--surface-2)}
+.plat svg{width:40px;height:40px;flex:none}
+.plat small{display:block;font:500 13px/1.3 var(--body);color:var(--muted);margin-top:3px}
 .nl-points{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:8px;color:#C8CAD0;font-size:15px}
 .nl-points li{display:flex;gap:10px;align-items:flex-start}
 .nl-points li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:9px}
 
 /* Sponsor */
-.sponsor{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.sponsor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:start}
 @media (max-width:880px){.sponsor{grid-template-columns:1fr;gap:24px}}
 .sponsor-pitch p{color:var(--soft);margin:0 0 14px;max-width:48ch}
-.offer{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.offer{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .offer li{padding:12px 0;border-bottom:1px solid var(--line)}
 .offer strong{display:block;font:700 17px/1.25 var(--display)}
 .offer span{color:var(--muted);font-size:14px}
-.contact{background:#000;color:#fff;border:1px solid #22304F;border-radius:var(--r);padding:28px 24px;box-shadow:var(--stage-shadow)}
-.contact h3{font-size:24px;margin-bottom:10px}
-.contact p{color:#C8CAD0;margin:0 0 20px}
-.contact ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:8px;color:#C8CAD0;font-size:15px}
-.contact li{display:flex;gap:10px;align-items:flex-start}
-.contact li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:9px}
-.contact .btn{width:100%;padding:16px;font-size:17px}
-.contact .addr{display:block;text-align:center;margin-top:12px;font-size:14px;color:#C8CAD0}
-.contact .addr a{color:#fff}
+.sponsor-pitch .btn{margin-top:8px;padding:15px 22px;font-size:17px}
+.sponsor .partners{grid-column:1/-1;margin-top:8px}
 
 footer{margin-top:72px;background:var(--foot-bg);border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:24px 0}
 footer a{color:var(--soft)}
@@ -202,25 +212,22 @@ footer a{color:var(--soft)}
 <body>
 <div class="topbar"><div class="wrap">
   <a class="logo" href="/" aria-label="ADSN home"><img src="/assets/adsn-logo.jpg" alt="ADSN" width="720" height="295"></a>
-  <nav class="topnav" aria-label="Main"><a href="#latest">Latest</a><a href="#network">Network</a><a href="#newsletter">Newsletter</a><a href="#sponsor">Sponsor</a><a class="pill" href="https://adsn.beehiiv.com" target="_blank" rel="noopener">Subscribe</a></nav>
+  <nav class="topnav" aria-label="Main"><a href="#latest">Latest</a><a href="#network">Network</a><a href="#newsletter">Newsletter</a><a href="#sponsor">Sponsor</a><a class="pill" href="#newsletter">Subscribe</a></nav>
 </div></div>
 
 <header class="hero"><div class="wrap">
   <div class="hero-grid">
     <div>
       <p class="eyebrow red">The ESPN of big tech</p>
-      <h1>Big tech, advertising, and AI, every week</h1>
-      <p class="lede">ADSN is a media network that includes a video podcast, interview series, newsletter, and social media that focuses on big tech, advertising, and AI, led by <b>James Borow</b> and <b>Daniel Druger</b>.</p>
-      <div class="ctas">
-        <a class="btn" href="#newsletter">Get the newsletter</a>
-        <a class="btn ghost" href="#sponsor">Sponsor ADSN</a>
-      </div>
+      <h1><span class="l">Big tech, advertising,</span> <span class="l l2">and AI, every week.</span></h1>
+      <p class="lede">ADSN is a media network that includes a weekly live show, original shows, newsletter, and social media following the biggest headlines and people on the move, that focuses on big tech, advertising, and AI.</p>
+      <div class="nl-form" data-height="60"></div>
     </div>
     <div class="hero-right" id="latest">
-      <h2 class="vhead">See what's airing on ADSN</h2>
+      <h2 class="vhead"><i aria-hidden="true"></i>Watch airing on ADSN</h2>
       <div class="hero-video">
         <div class="vplayer" id="vplayer"></div>
-        <div class="vinfo"><span class="vtag" id="vtag">Latest episode</span><h3 id="vtitle">Loading the newest episode…</h3></div>
+        <div class="vinfo"><span class="vtag" id="vtag">ADSN</span><h3 id="vtitle">Loading the newest episode…</h3></div>
       </div>
     </div>
   </div>
@@ -287,7 +294,7 @@ footer a{color:var(--soft)}
 
   <section class="block" id="network" aria-labelledby="networkTitle">
     <div class="section-head">
-      <div><h2 id="networkTitle">The ADSN network</h2><p class="sub">Four ways to follow along, and four places sponsors show up.</p></div>
+      <div><h2 id="networkTitle">The ADSN network</h2><p class="sub">Never miss ADSN, four ways to follow along.</p></div>
     </div>
     <div class="shows swipe" aria-label="The ADSN network (swipe for more)">
       <a class="show" href="#newsletter"><p class="eyebrow blue">01 · Inboxes</p><h3>The Newsletter</h3><p>The week in big tech and AI, with episode recaps to 4.8K subscribers.</p><span class="more">Subscribe</span></a>
@@ -333,19 +340,6 @@ footer a{color:var(--soft)}
         </ul>
       </div>
     </div>
-
-    <div class="partners">
-      <p class="eyebrow">Past and current partners</p>
-      <div class="plogos">
-        <img src="/assets/partners/thrad.svg" alt="Thrad" class="tall">
-        <img src="/assets/partners/adquick.png" alt="AdQuick">
-        <img src="/assets/partners/roku.svg" alt="Roku">
-        <img src="/assets/partners/morningbrew.svg" alt="Morning Brew">
-        <img src="/assets/partners/beehiiv.svg" alt="beehiiv">
-        <img src="/assets/partners/measured.svg" alt="Measured">
-        <img src="/assets/partners/dashfi.svg" alt="Dash.fi">
-      </div>
-    </div>
   </section>
 
   <section class="block" id="listen">
@@ -359,16 +353,17 @@ footer a{color:var(--soft)}
           <li>What we're reading and arguing about this week</li>
           <li>First word on new shows, guests, and events</li>
         </ul>
-        <a class="btn" href="https://adsn.beehiiv.com" target="_blank" rel="noopener">Sign up for the newsletter</a>
+        <div class="nl-form" data-height="60"></div>
       </div>
       <div class="cta-card">
-        <h2>Listen anywhere</h2>
-        <p>Watch on YouTube, or listen wherever you get podcasts.</p>
-        <div class="platforms">
-          <a class="btn ghost" href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn ghost" href="https://open.spotify.com/show/3JyftL7aNBc7Q5axOdIaov" target="_blank" rel="noopener">Spotify</a>
-          <a class="btn ghost" href="https://podcasts.apple.com/us/podcast/adsn/id1685124657" target="_blank" rel="noopener">Apple Podcasts</a>
+        <h2>Watch or listen anywhere</h2>
+        <p>New episodes every week, wherever you watch or listen.</p>
+        <div class="plat">
+          <a href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#FF0000"/><path d="M16 13.5v13l11-6.5z" fill="#fff"/></svg><span>YouTube<small>Watch every episode</small></span></a>
+          <a href="https://open.spotify.com/show/3JyftL7aNBc7Q5axOdIaov" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#1DB954"/><path d="M10.5 15.2c6.3-1.9 13.4-1.4 19 1.7M11.7 20.6c5.3-1.5 11-1 15.6 1.6M12.8 25.7c4.3-1.2 8.7-.8 12.3 1.2" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round"/></svg><span>Spotify<small>Watch or listen</small></span></a>
+          <a href="https://podcasts.apple.com/us/podcast/adsn/id1685124657" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="apg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F452FF"/><stop offset="1" stop-color="#832BC1"/></linearGradient></defs><rect width="40" height="40" rx="9" fill="url(#apg)"/><circle cx="20" cy="17" r="3.4" fill="#fff"/><path d="M20 22c-1.7 0-2.7 1-2.5 2.7l.7 6c.1 1.2.8 1.8 1.8 1.8s1.7-.6 1.8-1.8l.7-6c.2-1.7-.8-2.7-2.5-2.7z" fill="#fff"/><path d="M13.6 24.4a8.4 8.4 0 1 1 12.8 0M10.8 27.6a12.2 12.2 0 1 1 18.4 0" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span>Apple Podcasts<small>Listen</small></span></a>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -378,30 +373,31 @@ footer a{color:var(--soft)}
       <div class="sponsor-pitch">
         <p class="eyebrow red">Sponsor ADSN</p>
         <h2>Put your brand in front of the people who run advertising</h2>
-        <p>Our audience buys, sells, builds, and invests in ads. Email Daniel and he'll get back to you within a couple of business days.</p>
-        <ul class="offer">
-          <li><strong>Episode sponsorship</strong><span>A host-read spot on The Rundown or 30 Minutes</span></li>
-          <li><strong>On-set placement</strong><span>Your brand on the studio wall, James's hat, or the shirt, for 3 full months</span></li>
-          <li><strong>Newsletter ad</strong><span>A placement in the ADSN newsletter</span></li>
-        </ul>
+        <p>Our audience buys, sells, builds, and invests in ads. Tell us what you have in mind and Daniel will get back to you within a couple of business days.</p>
+        <a class="btn" id="sponsorMail" href="mailto:daniel@adsnventures.com?subject=Sponsoring%20ADSN">Get in touch</a>
       </div>
-
-      <div class="contact">
-        <h3>Tell us what you have in mind</h3>
-        <p>Send Daniel a quick note. These help us reply faster:</p>
-        <ul>
-          <li>Your company and what you're promoting</li>
-          <li>What you're interested in: episode, on-set, or newsletter</li>
-          <li>Rough budget and timing</li>
-        </ul>
-        <a class="btn" id="sponsorMail" href="mailto:daniel@adsnventures.com?subject=Sponsoring%20ADSN">Email Daniel about sponsoring</a>
-        <span class="addr">or write to <a href="mailto:daniel@adsnventures.com">daniel@adsnventures.com</a></span>
+      <ul class="offer">
+        <li><strong>Episode sponsorship</strong><span>A host-read spot on The Rundown or 30 Minutes</span></li>
+        <li><strong>On-set placement</strong><span>Your brand on the studio wall, James's hat, or the shirt, for 3 full months</span></li>
+        <li><strong>Newsletter ad</strong><span>A placement in the ADSN newsletter</span></li>
+      </ul>
+      <div class="partners">
+      <p class="eyebrow">Past and current partners</p>
+      <div class="plogos">
+        <img src="/assets/partners/thrad.svg" alt="Thrad" class="tall">
+        <img src="/assets/partners/adquick.png" alt="AdQuick">
+        <img src="/assets/partners/roku.svg" alt="Roku">
+        <img src="/assets/partners/morningbrew.svg" alt="Morning Brew">
+        <img src="/assets/partners/beehiiv.svg" alt="beehiiv">
+        <img src="/assets/partners/measured.svg" alt="Measured">
+        <img src="/assets/partners/dashfi.svg" alt="Dash.fi">
+      </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap foot"><span>ADSN. Hosted by James Borow and Daniel Druger.</span><span><a href="mailto:daniel@adsnventures.com">daniel@adsnventures.com</a> · <a href="https://x.com/the_adsn" target="_blank" rel="noopener">X</a> · <a href="https://www.linkedin.com/company/theadsn" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/adsn.ig/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener">YouTube</a></span></div></footer>
+<footer><div class="wrap foot"><span>© 2026 ADSN. Hosted by James Borow and Daniel Druger.</span><span><a href="https://x.com/the_adsn" target="_blank" rel="noopener">X</a> · <a href="https://www.linkedin.com/company/theadsn" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/adsn.ig/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener">YouTube</a></span></div></footer>
 
 <script>
 (function(){
@@ -411,53 +407,65 @@ footer a{color:var(--soft)}
     { id: "ASEYVgCY1YM", title: "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch", published: "2026-10-20T13:00:15+00:00" },
     { id: "_dog0tGGiF8", title: "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity | THE RUNDOWN", published: "2026-10-16T13:00:32+00:00" },
   ];
+  // beehiiv subscribe form. Paste the form's link from beehiiv (Grow → Subscribe forms → Embed:
+  // the src="https://subscribe-forms.beehiiv.com/…" part). Until then, each slot shows a Subscribe button.
+  const BEEHIIV_FORM_SRC = "";
   const $ = id => document.getElementById(id);
-  const fmtDate = s => s ? new Date(s).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
-  const showName = t => /rundown/i.test(t) ? "The Rundown" : /30 minutes/i.test(t) ? "30 Minutes" : /ladies who launch/i.test(t) ? "Ladies Who Launch" : "";
+  const showName = t => /rundown/i.test(t) ? "The Rundown" : /30 minutes/i.test(t) ? "30 Minutes" : /ladies who launch/i.test(t) ? "Ladies Who Launch" : /no permission/i.test(t) ? "No Permission" : "ADSN";
+  const embed = (id, title, sound) => {
+    const f = document.createElement("iframe");
+    // Browsers only allow autoplay with the sound off; a click to play keeps the sound on.
+    f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&playsinline=1&rel=0&modestbranding=1" + (sound ? "" : "&mute=1");
+    f.title = title; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+    return f;
+  };
+  const thumb = (id, title, size, onPlay) => {
+    const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Play: " + title);
+    const img = document.createElement("img"); img.alt = ""; img.loading = "lazy";
+    img.src = "https://i.ytimg.com/vi/" + id + "/" + size + ".jpg";
+    img.onerror = () => { img.onerror = null; img.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; };
+    const p = document.createElement("span"); p.className = "vplay";
+    p.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l15 9-15 9z" fill="#fff"/></svg>';
+    b.append(img, p); b.addEventListener("click", onPlay);
+    return b;
+  };
 
-  /* ---------- Latest video ---------- */
-  let videos = [], cur = 0;
-  function showVideo(i, play){
-    cur = i; const v = videos[i];
-    const show = showName(v.title);
-    $("vtag").textContent = i === 0 ? (show ? "Latest · " + show : "Latest episode") : (show || "Recent episode");
-    $("vtitle").textContent = v.title;
-    const pl = $("vplayer");
-    if (play) {
+  /* ---------- Newsletter forms ---------- */
+  document.querySelectorAll(".nl-form").forEach(slot => {
+    if (BEEHIIV_FORM_SRC) {
       const f = document.createElement("iframe");
-      f.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
-      f.title = v.title; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
-      pl.replaceChildren(f);
+      f.src = BEEHIIV_FORM_SRC; f.className = "beehiiv-embed"; f.title = "Subscribe to the ADSN newsletter";
+      f.setAttribute("data-test-id", "beehiiv-embed"); f.scrolling = "no"; f.style.height = (slot.dataset.height || 60) + "px";
+      slot.replaceChildren(f);
     } else {
-      // Thumbnail first, so the page stays fast; the player loads on click.
-      const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Play: " + v.title);
-      const img = document.createElement("img"); img.alt = "";
-      img.src = "https://i.ytimg.com/vi/" + v.id + "/maxresdefault.jpg";
-      img.onerror = () => { img.onerror = null; img.src = "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg"; };
-      const p = document.createElement("span"); p.className = "vplay";
-      p.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l15 9-15 9z" fill="#fff"/></svg>';
-      b.append(img, p); b.addEventListener("click", () => showVideo(cur, true));
-      pl.replaceChildren(b);
+      const a = document.createElement("a"); a.className = "btn"; a.textContent = "Subscribe to the newsletter";
+      a.href = "https://adsn.beehiiv.com/subscribe"; a.target = "_blank"; a.rel = "noopener";
+      slot.replaceChildren(a);
     }
-    [...$("vlist").children].forEach(li => li.classList.toggle("on", +li.dataset.i === i));
-  }
-  function renderVideos(list){
-    videos = list;
+  });
+
+  /* ---------- Latest video (plays muted on arrival) ---------- */
+  function renderVideos(videos){
     if (!videos.length) { $("vtitle").textContent = "Watch ADSN on YouTube"; return; }
+    const v = videos[0];
+    $("vtag").textContent = showName(v.title);
+    $("vtitle").textContent = v.title;
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pl = $("vplayer");
+    pl.replaceChildren(reduce ? thumb(v.id, v.title, "maxresdefault", () => pl.replaceChildren(embed(v.id, v.title, true))) : embed(v.id, v.title, false));
+
+    // Recent episodes: the ones after the newest, each playable right on the page.
     const ul = $("vlist"); ul.replaceChildren();
-    videos.forEach((v, i) => {
-      const li = document.createElement("li"); li.dataset.i = i;
-      const b = document.createElement("button"); b.type = "button";
-      const img = document.createElement("img"); img.src = "https://i.ytimg.com/vi/" + v.id + "/mqdefault.jpg"; img.alt = ""; img.loading = "lazy";
-      const t = document.createElement("div");
-      const tt = document.createElement("b"); tt.textContent = v.title;
-      const d = document.createElement("small"); d.textContent = (i === 0 ? "Newest · " : "") + fmtDate(v.published);
-      t.append(tt, d); b.append(img, t);
-      b.addEventListener("click", () => { showVideo(i, true); $("latest").scrollIntoView({ behavior: "smooth", block: "start" }); });
-      li.appendChild(b); ul.appendChild(li);
+    videos.slice(1, 4).forEach(r => {
+      const li = document.createElement("li");
+      const box = document.createElement("div"); box.className = "vplayer";
+      box.appendChild(thumb(r.id, r.title, "mqdefault", () => box.replaceChildren(embed(r.id, r.title, true))));
+      const cap = document.createElement("div"); cap.className = "vcap";
+      const tag = document.createElement("span"); tag.className = "vtag"; tag.textContent = showName(r.title);
+      const t = document.createElement("b"); t.textContent = r.title;
+      cap.append(tag, t); li.append(box, cap); ul.appendChild(li);
     });
-    $("episodes").hidden = videos.length < 2;
-    showVideo(0, false);
+    $("episodes").hidden = !ul.children.length;
   }
   fetch("/latest.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : Promise.reject())
     .then(d => renderVideos(d.videos && d.videos.length ? d.videos : FALLBACK_VIDEOS))

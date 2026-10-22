@@ -10,7 +10,7 @@ The page started as `home.html` in the private `adsn-auction-site` project (Verc
 
 | File | What it does |
 |---|---|
-| `index.html` | The whole site. Inline CSS and JS, no build step. Hero (overview + "See what's airing on ADSN" latest-episode player), "Read and watched by people at" logo marquee, "The ADSN network" (Newsletter, ADSN Rundown, ADSN Originals, Social Media), recent episodes, audience and guests, partner logos, newsletter sign-up (links to adsn.beehiiv.com), listen links, and a "Sponsor ADSN" section with an email button (no form, Daniel's call). |
+| `index.html` | The whole site. Inline CSS and JS, no build step. Hero (two-line headline, Daniel's overview copy, newsletter form, and a "Watch airing on ADSN" player that autoplays the newest episode muted; the label above the title is just the show name), "Read and watched by people at" logo marquee, "The ADSN network" (Newsletter, ADSN Rundown, ADSN Originals, Social Media; "Never miss ADSN, four ways to follow along."), recent episodes (episodes 2–4, each plays in its own card, no dates), audience and guests, newsletter card, "Watch or listen anywhere" (YouTube, Spotify, Apple Podcasts tiles with logos), and "Sponsor ADSN" (pitch, Get in touch mailto with a prefilled subject and body, offers, past and current partners). Footer: © 2026 ADSN, social links, no email address. |
 | `latest.json` | Newest 4 full-length YouTube episodes (Shorts skipped). Read by `index.html`; it falls back to a short list baked into the page if this can't load. |
 | `scripts/update-latest.mjs` | Rebuilds `latest.json` from YouTube's public RSS feed for @theadsn (channel `UCzjdJt8Z0W657e_afeyxAxQ`). The feed often answers 404, so it retries 12 times and otherwise exits quietly, keeping the old file. |
 | `.github/workflows/latest.yml` | Runs the script every hour and commits `latest.json` when it changes. Can be run by hand from the Actions tab. |
@@ -18,6 +18,8 @@ The page started as `home.html` in the private `adsn-auction-site` project (Verc
 | `assets/` | ADSN logo, icons, `watchers/` (20 company wordmarks, one color) and `partners/` logos. |
 
 ## Facts and choices
+
+- Newsletter forms: every `.nl-form` slot shows the beehiiv embed when `BEEHIIV_FORM_SRC` in `index.html` is set (the `src` from beehiiv → Grow → Subscribe forms → embed code); empty means a "Subscribe to the newsletter" button to adsn.beehiiv.com/subscribe. `attribution.js` is already in the page head.
 
 - Contact: daniel@adsnventures.com. Instagram is @adsn.ig (Daniel confirmed; the old Netlify site linked @adsnonig).
 - X and LinkedIn feed embeds were tried and dropped: X blocks embeds for signed-out visitors and LinkedIn has no official feed embed.
