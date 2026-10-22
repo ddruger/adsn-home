@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="ADSN is a media network that includes a video podcast, interview series, newsletter, and social media that focuses on big tech, advertising, and AI, led by James Borow and Daniel Druger.">
+<meta name="description" content="ADSN is a media network that includes a weekly live show, original shows, newsletter, and social media following the biggest headlines and people on the move, that focuses on big tech, advertising, and AI.">
 <script>try{var t=new URLSearchParams(location.search).get("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,9 +64,10 @@ a{color:inherit}
 .hero{background:var(--hero-bg),var(--bg);padding:56px 0 60px;border-bottom:1px solid var(--line)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
 @media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:36px}}
-.hero h1{font-size:clamp(34px,3.9vw,48px);line-height:1.04;letter-spacing:-.03em;max-width:none;margin:0 0 18px}
-.hero h1 .l{display:block}
-@media (max-width:420px){.hero h1 .l{display:inline}}
+.hero h1{font-size:clamp(30px,calc(11vw - 4px),64px);line-height:1;letter-spacing:-.03em;max-width:none;margin:0 0 20px}
+/* Three fixed lines; the size tracks the column width so the longest line ("and AI, every week.") always fits. */
+@media (min-width:921px){.hero h1{font-size:clamp(36px,calc(5.3vw - 5px),58px)}}
+.hero h1 .l{display:block;white-space:nowrap}
 .lede{color:var(--soft);max-width:50ch;margin:0 0 26px;font-size:17px;line-height:1.6}
 .lede b{color:var(--ink);font-weight:600}
 .ctas{display:flex;gap:10px;flex-wrap:wrap}
@@ -219,8 +220,8 @@ footer a{color:var(--soft)}
   <div class="hero-grid">
     <div>
       <p class="eyebrow red">The ESPN of big tech</p>
-      <h1><span class="l">Big tech, advertising,</span> <span class="l l2">and AI, every week.</span></h1>
-      <p class="lede">ADSN is a media network that includes a video podcast, interview series, newsletter, and social media that focuses on big tech, advertising, and AI, led by <b>James Borow</b> and <b>Daniel Druger</b>.</p>
+      <h1><span class="l">Big tech,</span> <span class="l">advertising,</span> <span class="l">and AI, every week.</span></h1>
+      <p class="lede">ADSN is a media network that includes a weekly live show, original shows, newsletter, and social media following the biggest headlines and people on the move, that focuses on big tech, advertising, and AI.</p>
       <div class="nl-form"></div>
     </div>
     <div class="hero-right" id="latest">
