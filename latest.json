@@ -20,5 +20,22 @@
       "title": "America.gov, McDonald’s Ads and Data Centers in Space | ADSN Rundown",
       "published": "2026-10-01T19:11:03+00:00"
     }
-  ]
+  ],
+  "shows": {
+    "rundown": {
+      "id": "_dog0tGGiF8",
+      "title": "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity  | THE RUNDOWN",
+      "published": "2026-10-16T13:00:32+00:00"
+    },
+    "ladies": {
+      "id": "ASEYVgCY1YM",
+      "title": "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch",
+      "published": "2026-10-20T13:00:15+00:00"
+    },
+    "thirty": {
+      "id": "6Aoka2NcmGs",
+      "title": "Will Shopping Agents Break Retail Media? ft. Ari Paparo | 30 Minutes",
+      "published": "2026-10-22T13:00:03+00:00"
+    }
+  }
 }

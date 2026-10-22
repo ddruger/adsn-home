@@ -307,7 +307,7 @@ footer a{color:var(--soft)}
 
   <section class="block" id="episodes" aria-labelledby="episodesTitle" hidden>
     <div class="section-head">
-      <div><h2 id="episodesTitle">Recent episodes</h2></div>
+      <div><h2 id="episodesTitle">Recent Shows</h2></div>
       <a class="btn ghost" href="https://www.youtube.com/@theadsn?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
     </div>
     <ul class="vlist swipe" id="vlist"></ul>
@@ -408,6 +408,8 @@ footer a{color:var(--soft)}
     { id: "ASEYVgCY1YM", title: "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch", published: "2026-10-20T13:00:15+00:00" },
     { id: "_dog0tGGiF8", title: "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity | THE RUNDOWN", published: "2026-10-16T13:00:32+00:00" },
   ];
+  // "Recent Shows": the newest episode of each show, in this order (keys match latest.json "shows").
+  const SHOW_ORDER = ["rundown", "ladies", "thirty"];
   // beehiiv subscribe form (Grow → Subscribe forms → embed code: the data-beehiiv-form value).
   // Empty shows a Subscribe button in each slot instead.
   const BEEHIIV_FORM_ID = "fd0a0f67-9558-4ea3-8ab6-b22f127ab1c7";
@@ -447,7 +449,7 @@ footer a{color:var(--soft)}
   });
 
   /* ---------- Latest video (plays muted on arrival) ---------- */
-  function renderVideos(videos){
+  function renderVideos(videos, shows){
     if (!videos.length) { $("vtitle").textContent = "Watch ADSN on YouTube"; return; }
     const v = videos[0];
     $("vtag").textContent = showName(v.title);
@@ -456,9 +458,10 @@ footer a{color:var(--soft)}
     const pl = $("vplayer");
     pl.replaceChildren(reduce ? thumb(v.id, v.title, "maxresdefault", () => pl.replaceChildren(embed(v.id, v.title, true))) : embed(v.id, v.title, false));
 
-    // Recent episodes: the ones after the newest, each playable right on the page.
+    // Recent Shows: the newest episode of each show, each playable right on the page.
     const ul = $("vlist"); ul.replaceChildren();
-    videos.slice(1, 4).forEach(r => {
+    const picks = shows ? SHOW_ORDER.map(k => shows[k]).filter(Boolean) : videos.slice(1, 4);
+    picks.forEach(r => {
       const li = document.createElement("li");
       const box = document.createElement("div"); box.className = "vplayer";
       box.appendChild(thumb(r.id, r.title, "mqdefault", () => box.replaceChildren(embed(r.id, r.title, true))));
@@ -470,7 +473,7 @@ footer a{color:var(--soft)}
     $("episodes").hidden = !ul.children.length;
   }
   fetch("/latest.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => renderVideos(d.videos && d.videos.length ? d.videos : FALLBACK_VIDEOS))
+    .then(d => d.videos && d.videos.length ? renderVideos(d.videos, d.shows) : renderVideos(FALLBACK_VIDEOS))
     .catch(() => renderVideos(FALLBACK_VIDEOS));
 
   /* ---------- Sponsor email ---------- */
