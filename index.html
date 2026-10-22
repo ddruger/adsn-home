@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ADSN | The ESPN of big tech</title>
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="ADSN is a show and newsletter about ads, media, and big tech, hosted by James Borow and Daniel Druger. Watch the latest episode and follow along on X and LinkedIn.">
+<script>try{var t=new URLSearchParams(location.search).get("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#DC2626;--blue:#2563EB;--blue-2:#93C5FD;
+  --bg:#0A0A0A;--surface:#111214;--surface-2:#17181B;--ink:#FFFFFF;--soft:#C8CAD0;--muted:#8B8E96;--line:#25272C;--line-2:#33363C;
+  --accent-ink:#93C5FD;--sel-bg:#FFFFFF;--sel-ink:#0A0A0A;--sel-sub:#4B4F58;--foot-bg:#000000;
+  --logo-filter:brightness(0) invert(1);--stage-shadow:0 30px 80px -30px rgba(37,99,235,.45);
+  --hero-bg:radial-gradient(70% 55% at 25% 20%,rgba(37,99,235,.20),transparent 70%),radial-gradient(40% 40% at 90% 10%,rgba(220,38,38,.10),transparent 70%);
+  --display:"Inter Tight","Inter",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --r:12px;
+  color-scheme:dark;box-sizing:border-box;
+}
+:root:not([data-theme="dark"]){
+  color-scheme:light;
+  --bg:#F5F5F2;--surface:#FFFFFF;--surface-2:#F0F1F3;--ink:#0B0B0C;--soft:#41454D;--muted:#6B7079;--line:#E2E3E7;--line-2:#CFD2D8;
+  --accent-ink:#1D4ED8;--sel-bg:#0B0B0C;--sel-ink:#FFFFFF;--sel-sub:#A8ABB2;--foot-bg:#ECECE8;
+  --logo-filter:brightness(0);--stage-shadow:0 24px 60px -28px rgba(15,23,42,.45);
+  --hero-bg:radial-gradient(70% 55% at 25% 20%,rgba(37,99,235,.10),transparent 70%),radial-gradient(40% 40% at 90% 10%,rgba(220,38,38,.07),transparent 70%);
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.eyebrow{font:600 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.eyebrow.red{color:var(--red)}
+.eyebrow.blue{color:var(--blue)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.025em;margin:0}
+h1{font-size:clamp(38px,5.6vw,68px);line-height:1;max-width:15ch;margin:0 0 16px}
+h2{font-size:clamp(30px,3.6vw,44px);line-height:1.05;margin:0 0 10px}
+h3{font-size:20px;line-height:1.2;letter-spacing:-.01em}
+.sub{color:var(--soft);max-width:62ch;margin:0 0 28px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* Top bar */
+.topbar{background:#000;border-bottom:1px solid #25272C;position:sticky;top:0;z-index:20}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:12px}
+.logo{display:flex;align-items:center;height:64px}
+.logo img{height:46px;width:auto;display:block;mix-blend-mode:screen}
+.topnav{display:flex;align-items:center;gap:20px}
+.topnav>a{color:#C8CAD0;font:500 14px/1 var(--body);text-decoration:none}
+.topnav>a:hover{color:#fff}
+.topnav>a.pill{color:#fff;background:var(--red);padding:9px 14px;border-radius:999px;font-weight:600}
+.topnav>a.pill:hover{filter:brightness(1.1)}
+@media (max-width:620px){.topnav>a:not(.pill){display:none}}
+
+/* Hero */
+.hero{background:var(--hero-bg),var(--bg);padding:52px 0 56px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px}
+@media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
+.lede{color:var(--soft);max-width:54ch;margin:0 0 24px;font-size:18px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:14px 18px;font:700 16px/1 var(--display);letter-spacing:-.01em;background:var(--red);color:#fff;cursor:pointer;text-decoration:none;transition:filter .15s,transform .05s}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2)}
+.btn.ghost:hover{background:var(--surface-2);filter:none}
+.btn svg{width:18px;height:18px;flex:none}
+.hero-grid{align-items:center}
+.lede b{color:var(--ink);font-weight:600}
+.hero-right{min-width:0;scroll-margin-top:80px}
+.vhead{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em;margin:0 0 12px}
+.hero-video{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--stage-shadow)}
+
+section.block{padding:72px 0 0;scroll-margin-top:64px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.section-head .sub{margin:0}
+
+/* Latest episode */
+.vplayer{position:relative;aspect-ratio:16/9;background:#000}
+.vplayer iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vplayer button{all:unset;position:absolute;inset:0;cursor:pointer;display:block}
+.vplayer button:focus-visible{outline:2px solid var(--blue-2);outline-offset:-4px}
+.vplayer img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;transition:opacity .2s}
+.vplayer button:hover img{opacity:1}
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(220,38,38,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.vplay svg{width:28px;height:28px;margin-left:4px}
+.vinfo{padding:16px 18px 18px}
+.vtag{display:inline-block;font:600 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.vinfo h3{font-size:clamp(19px,2.2vw,24px);letter-spacing:-.02em}
+.vlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:880px){.vlist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vlist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:10px;width:100%;border-radius:8px}
+.vlist button:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
+.vlist img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block;background:#000}
+.vlist b{font:700 15px/1.3 var(--display);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.vlist small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.vlist button:hover b{text-decoration:underline;text-underline-offset:3px}
+.vlist li.on b{color:var(--red)}
+
+/* Watched by */
+.watchers{padding:44px 0 0;text-align:center}
+.watchers .eyebrow{margin-bottom:22px}
+.marquee{position:relative;overflow:hidden;display:grid;gap:30px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.mrow{display:flex;width:max-content;animation:marquee 48s linear infinite}
+.mrow.rev{animation-direction:reverse}
+.marquee:hover .mrow{animation-play-state:paused}
+.mset{display:flex;align-items:center;flex:none}
+.mset img{box-sizing:content-box;flex:none;height:26px;width:auto;max-width:150px;padding:0 34px;filter:var(--logo-filter);opacity:.72}
+.mset img.w-wide{height:15px;max-width:180px}
+.mset img.w-snap,.mset img.w-roku{height:22px}
+.mset img.w-comcast{height:34px}
+.mset img.w-apple,.mset img.w-lyft{height:28px}
+.mset img.w-sm{height:21px}
+.mset img.w-pg{height:25px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:640px){.marquee{gap:22px}.mrow{animation-duration:36s}.mset img{height:19px;padding:0 22px}.mset img.w-wide{height:11px}.mset img.w-snap,.mset img.w-roku,.mset img.w-sm{height:16px}.mset img.w-comcast{height:25px}.mset img.w-apple,.mset img.w-lyft{height:21px}.mset img.w-pg{height:18px}}
+@media (prefers-reduced-motion:reduce){.marquee{-webkit-mask-image:none;mask-image:none}.mrow{animation:none;width:auto;justify-content:center}.mset{flex-wrap:wrap;justify-content:center;row-gap:20px}.mset[aria-hidden]{display:none}}
+
+/* Shows */
+.shows{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:880px){.shows{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .swipe{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px 6px;scroll-padding:0 20px}
+  .swipe::-webkit-scrollbar{display:none}
+  .swipe>*{flex:0 0 84%;scroll-snap-align:start;min-width:0}
+}
+.show{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:border-color .15s}
+a.show:hover{border-color:var(--ink)}
+.show .socials{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.show .socials a{font:700 14px/1 var(--display);color:var(--red);text-decoration:none}
+.show .socials a:hover{text-decoration:underline;text-underline-offset:3px}
+.show .eyebrow{margin:0}
+.show .more{margin-top:auto;padding-top:6px;font:700 14px/1 var(--display);color:var(--red)}
+.show .more::after{content:" →"}
+.show h3{font-size:22px}
+.show p{margin:0;color:var(--soft);font-size:15px}
+
+/* Audience */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:880px){.why-grid{grid-template-columns:1fr}}
+.why-grid h3{margin-bottom:12px}
+.roster{list-style:none;margin:0;padding:0}
+.roster li{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.roster .pos{font:700 12px/22px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.35);border-radius:6px;padding:0 8px;grid-row:span 2;align-self:start;min-width:3.6em;text-align:center}
+.roster strong{font-weight:600}
+.roster span{color:var(--muted);font-size:14px}
+.guests{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.guests li{padding:12px 0;border-bottom:1px solid var(--line)}
+.guests strong{display:block;font:700 17px/1.25 var(--display)}
+.guests span{color:var(--muted);font-size:14px}
+@media (max-width:480px){.guests{gap:0 16px}.guests strong{font-size:15px}.guests span{font-size:13px;line-height:1.35;display:block}}
+.partners{margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+.partners p{margin:0 0 18px}
+.plogos{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(18px,2.6vw,36px)}
+.plogos img{flex:none;height:clamp(15px,2vw,24px);width:auto;filter:var(--logo-filter);opacity:.78;transition:opacity .15s}
+.plogos img:hover{opacity:1}
+.plogos img.tall{height:clamp(20px,2.7vw,32px)}
+@media (max-width:640px){.plogos{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px;mask-image:linear-gradient(90deg,#000 85%,transparent)}.plogos::-webkit-scrollbar{display:none}.plogos img{height:22px}.plogos img.tall{height:28px}}
+
+/* Newsletter + listen */
+.cta-band{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
+@media (max-width:880px){.cta-band{grid-template-columns:1fr}}
+.cta-card{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:26px 22px;scroll-margin-top:80px}
+.cta-card.dark{background:#000;border-color:#22304F;color:#fff;box-shadow:var(--stage-shadow)}
+.cta-card.dark p{color:#C8CAD0}
+.cta-card h2{font-size:clamp(26px,3vw,34px)}
+.cta-card p{margin:0 0 20px;color:var(--soft);max-width:52ch}
+.platforms{display:flex;gap:10px;flex-wrap:wrap}
+.platforms .btn{padding:12px 14px;font-size:15px}
+.nl-points{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:8px;color:#C8CAD0;font-size:15px}
+.nl-points li{display:flex;gap:10px;align-items:flex-start}
+.nl-points li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:9px}
+
+/* Sponsor */
+.sponsor{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+@media (max-width:880px){.sponsor{grid-template-columns:1fr;gap:24px}}
+.sponsor-pitch p{color:var(--soft);margin:0 0 14px;max-width:48ch}
+.offer{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.offer li{padding:12px 0;border-bottom:1px solid var(--line)}
+.offer strong{display:block;font:700 17px/1.25 var(--display)}
+.offer span{color:var(--muted);font-size:14px}
+.contact{background:#000;color:#fff;border:1px solid #22304F;border-radius:var(--r);padding:28px 24px;box-shadow:var(--stage-shadow)}
+.contact h3{font-size:24px;margin-bottom:10px}
+.contact p{color:#C8CAD0;margin:0 0 20px}
+.contact ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:8px;color:#C8CAD0;font-size:15px}
+.contact li{display:flex;gap:10px;align-items:flex-start}
+.contact li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:9px}
+.contact .btn{width:100%;padding:16px;font-size:17px}
+.contact .addr{display:block;text-align:center;margin-top:12px;font-size:14px;color:#C8CAD0}
+.contact .addr a{color:#fff}
+
+footer{margin-top:72px;background:var(--foot-bg);border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:24px 0}
+footer a{color:var(--soft)}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="logo" href="/" aria-label="ADSN home"><img src="/assets/adsn-logo.jpg" alt="ADSN" width="720" height="295"></a>
+  <nav class="topnav" aria-label="Main"><a href="#latest">Latest</a><a href="#network">Network</a><a href="#newsletter">Newsletter</a><a href="#sponsor">Sponsor</a><a class="pill" href="https://adsn.beehiiv.com" target="_blank" rel="noopener">Subscribe</a></nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow red">The ESPN of big tech</p>
+      <h1>Big tech, advertising, and AI, every week</h1>
+      <p class="lede">ADSN is a media network that includes a video podcast, interview series, newsletter, and social media that focuses on big tech, advertising, and AI, led by <b>James Borow</b> and <b>Daniel Druger</b>.</p>
+      <div class="ctas">
+        <a class="btn" href="#newsletter">Get the newsletter</a>
+        <a class="btn ghost" href="#sponsor">Sponsor ADSN</a>
+      </div>
+    </div>
+    <div class="hero-right" id="latest">
+      <h2 class="vhead">See what's airing on ADSN</h2>
+      <div class="hero-video">
+        <div class="vplayer" id="vplayer"></div>
+        <div class="vinfo"><span class="vtag" id="vtag">Latest episode</span><h3 id="vtitle">Loading the newest episode…</h3></div>
+      </div>
+    </div>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <section class="watchers" aria-labelledby="watchersTitle">
+    <p class="eyebrow" id="watchersTitle">Read and watched by people at</p>
+    <div class="marquee">
+      <div class="mrow">
+        <div class="mset">
+          <img src="/assets/watchers/snap.svg" alt="Snap" class="w-snap">
+          <img src="/assets/watchers/google.svg" alt="Google">
+          <img src="/assets/watchers/amazon.svg" alt="Amazon">
+          <img src="/assets/watchers/apple.svg" alt="Apple" class="w-apple">
+          <img src="/assets/watchers/meta.svg" alt="Meta" class="w-sm">
+          <img src="/assets/watchers/adobe.svg" alt="Adobe" class="w-sm">
+          <img src="/assets/watchers/reddit.svg" alt="Reddit">
+          <img src="/assets/watchers/spotify.svg" alt="Spotify">
+          <img src="/assets/watchers/tiktok.svg" alt="TikTok" class="w-sm">
+          <img src="/assets/watchers/pinterest.svg" alt="Pinterest">
+        </div>
+        <div class="mset" aria-hidden="true">
+          <img src="/assets/watchers/snap.svg" alt="" class="w-snap">
+          <img src="/assets/watchers/google.svg" alt="">
+          <img src="/assets/watchers/amazon.svg" alt="">
+          <img src="/assets/watchers/apple.svg" alt="" class="w-apple">
+          <img src="/assets/watchers/meta.svg" alt="" class="w-sm">
+          <img src="/assets/watchers/adobe.svg" alt="" class="w-sm">
+          <img src="/assets/watchers/reddit.svg" alt="">
+          <img src="/assets/watchers/spotify.svg" alt="">
+          <img src="/assets/watchers/tiktok.svg" alt="" class="w-sm">
+          <img src="/assets/watchers/pinterest.svg" alt="">
+        </div>
+      </div>
+      <div class="mrow rev">
+        <div class="mset">
+          <img src="/assets/watchers/uber.svg" alt="Uber" class="w-sm">
+          <img src="/assets/watchers/lyft.svg" alt="Lyft" class="w-lyft">
+          <img src="/assets/watchers/stripe.svg" alt="Stripe">
+          <img src="/assets/watchers/comcast.svg" alt="Comcast" class="w-comcast">
+          <img src="/assets/watchers/nbcuniversal.svg" alt="NBCUniversal" class="w-wide">
+          <img src="/assets/watchers/roku.svg" alt="Roku" class="w-roku">
+          <img src="/assets/watchers/pg.svg" alt="P&amp;G" class="w-pg">
+          <img src="/assets/watchers/thetradedesk.svg" alt="The Trade Desk" class="w-wide">
+          <img src="/assets/watchers/appsflyer.svg" alt="AppsFlyer">
+          <img src="/assets/watchers/taboola.svg" alt="Taboola" class="w-sm">
+        </div>
+        <div class="mset" aria-hidden="true">
+          <img src="/assets/watchers/uber.svg" alt="" class="w-sm">
+          <img src="/assets/watchers/lyft.svg" alt="" class="w-lyft">
+          <img src="/assets/watchers/stripe.svg" alt="">
+          <img src="/assets/watchers/comcast.svg" alt="" class="w-comcast">
+          <img src="/assets/watchers/nbcuniversal.svg" alt="" class="w-wide">
+          <img src="/assets/watchers/roku.svg" alt="" class="w-roku">
+          <img src="/assets/watchers/pg.svg" alt="" class="w-pg">
+          <img src="/assets/watchers/thetradedesk.svg" alt="" class="w-wide">
+          <img src="/assets/watchers/appsflyer.svg" alt="">
+          <img src="/assets/watchers/taboola.svg" alt="" class="w-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="network" aria-labelledby="networkTitle">
+    <div class="section-head">
+      <div><h2 id="networkTitle">The ADSN network</h2><p class="sub">Four ways to follow along, and four places sponsors show up.</p></div>
+    </div>
+    <div class="shows swipe" aria-label="The ADSN network (swipe for more)">
+      <a class="show" href="#newsletter"><p class="eyebrow blue">01 · Inboxes</p><h3>The Newsletter</h3><p>The week in big tech and AI, with episode recaps to 4.8K subscribers.</p><span class="more">Subscribe</span></a>
+      <a class="show" href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener"><p class="eyebrow blue">02 · Big tech</p><h3>ADSN Rundown</h3><p>The weekly news show on Spotify, Apple Podcasts, and YouTube.</p><span class="more">Watch</span></a>
+      <a class="show" href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener"><p class="eyebrow blue">03 · Shows</p><h3>ADSN Originals</h3><p>Long-form shows like Ladies Who Launch, 30 Minutes, No Permission, and more.</p><span class="more">Watch</span></a>
+      <div class="show"><p class="eyebrow blue">04 · Always on</p><h3>Social Media</h3><p>Follow along across LinkedIn, X, and Instagram to watch show clips and industry announcements.</p><span class="socials"><a href="https://www.linkedin.com/company/theadsn" target="_blank" rel="noopener">LinkedIn</a><a href="https://x.com/the_adsn" target="_blank" rel="noopener">X</a><a href="https://www.instagram.com/adsn.ig/" target="_blank" rel="noopener">Instagram</a></span></div>
+    </div>
+  </section>
+
+  <section class="block" id="episodes" aria-labelledby="episodesTitle" hidden>
+    <div class="section-head">
+      <div><h2 id="episodesTitle">Recent episodes</h2></div>
+      <a class="btn ghost" href="https://www.youtube.com/@theadsn?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+    </div>
+    <ul class="vlist swipe" id="vlist"></ul>
+  </section>
+
+  <section class="block" id="audience">
+    <h2>Who's watching, and who's been on</h2>
+    <p class="sub">The people who build, buy, and invest in advertising.</p>
+    <div class="why-grid">
+      <div>
+        <h3>Who's watching</h3>
+        <ul class="roster">
+          <li><span class="pos">Buy</span><strong>Media buyers and planners</strong><span>Agency traders at independents and holding companies</span></li>
+          <li><span class="pos">CMO</span><strong>Brand marketers and CMOs</strong><span>Managing six- to eight-figure media budgets</span></li>
+          <li><span class="pos">Build</span><strong>Ad tech operators and founders</strong><span>The people building platforms, DSPs, and monetization tools</span></li>
+          <li><span class="pos">VC</span><strong>Investors and advisors</strong><span>Venture investors across ad tech and media</span></li>
+          <li><span class="pos">Pub</span><strong>Publishers and creators</strong><span>Media owners figuring out how to monetize what's next</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Who's been on</h3>
+        <ul class="guests">
+          <li><strong>Eric Seufert</strong><span>Mobile Dev Memo</span></li>
+          <li><strong>Ari Paparo</strong><span>Marketecture, founder of Beeswax</span></li>
+          <li><strong>Bryan Kim</strong><span>Partner, a16z</span></li>
+          <li><strong>Gokul Rajaram</strong><span>Board member, Pinterest and Coinbase</span></li>
+          <li><strong>Conor McKenna</strong><span>Partner, LUMA Partners</span></li>
+          <li><strong>Per Sandell</strong><span>Head of Monetization Product, Spotify</span></li>
+          <li><strong>Patrick Harris</strong><span>Snap</span></li>
+          <li><strong>Adam Ryan</strong><span>CEO, Workweek</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="partners">
+      <p class="eyebrow">Past and current partners</p>
+      <div class="plogos">
+        <img src="/assets/partners/thrad.svg" alt="Thrad" class="tall">
+        <img src="/assets/partners/adquick.png" alt="AdQuick">
+        <img src="/assets/partners/roku.svg" alt="Roku">
+        <img src="/assets/partners/morningbrew.svg" alt="Morning Brew">
+        <img src="/assets/partners/beehiiv.svg" alt="beehiiv">
+        <img src="/assets/partners/measured.svg" alt="Measured">
+        <img src="/assets/partners/dashfi.svg" alt="Dash.fi">
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="listen">
+    <div class="cta-band">
+      <div class="cta-card dark" id="newsletter">
+        <p class="eyebrow red">The ADSN newsletter</p>
+        <h2>Get the week in big tech, in your inbox</h2>
+        <p>Join 4,800+ people in ads, media, and tech. Free.</p>
+        <ul class="nl-points">
+          <li>The takeaways from every episode, without watching the whole thing</li>
+          <li>What we're reading and arguing about this week</li>
+          <li>First word on new shows, guests, and events</li>
+        </ul>
+        <a class="btn" href="https://adsn.beehiiv.com" target="_blank" rel="noopener">Sign up for the newsletter</a>
+      </div>
+      <div class="cta-card">
+        <h2>Listen anywhere</h2>
+        <p>Watch on YouTube, or listen wherever you get podcasts.</p>
+        <div class="platforms">
+          <a class="btn ghost" href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn ghost" href="https://open.spotify.com/show/3JyftL7aNBc7Q5axOdIaov" target="_blank" rel="noopener">Spotify</a>
+          <a class="btn ghost" href="https://podcasts.apple.com/us/podcast/adsn/id1685124657" target="_blank" rel="noopener">Apple Podcasts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sponsor">
+    <div class="sponsor">
+      <div class="sponsor-pitch">
+        <p class="eyebrow red">Sponsor ADSN</p>
+        <h2>Put your brand in front of the people who run advertising</h2>
+        <p>Our audience buys, sells, builds, and invests in ads. Email Daniel and he'll get back to you within a couple of business days.</p>
+        <ul class="offer">
+          <li><strong>Episode sponsorship</strong><span>A host-read spot on The Rundown or 30 Minutes</span></li>
+          <li><strong>On-set placement</strong><span>Your brand on the studio wall, James's hat, or the shirt, for 3 full months</span></li>
+          <li><strong>Newsletter ad</strong><span>A placement in the ADSN newsletter</span></li>
+        </ul>
+      </div>
+
+      <div class="contact">
+        <h3>Tell us what you have in mind</h3>
+        <p>Send Daniel a quick note. These help us reply faster:</p>
+        <ul>
+          <li>Your company and what you're promoting</li>
+          <li>What you're interested in: episode, on-set, or newsletter</li>
+          <li>Rough budget and timing</li>
+        </ul>
+        <a class="btn" id="sponsorMail" href="mailto:daniel@adsnventures.com?subject=Sponsoring%20ADSN">Email Daniel about sponsoring</a>
+        <span class="addr">or write to <a href="mailto:daniel@adsnventures.com">daniel@adsnventures.com</a></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap foot"><span>ADSN. Hosted by James Borow and Daniel Druger.</span><span><a href="mailto:daniel@adsnventures.com">daniel@adsnventures.com</a> · <a href="https://x.com/the_adsn" target="_blank" rel="noopener">X</a> · <a href="https://www.linkedin.com/company/theadsn" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/adsn.ig/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@theadsn" target="_blank" rel="noopener">YouTube</a></span></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  // Shown if latest.json can't load. latest.json itself is refreshed hourly by .github/workflows/latest.yml.
+  const FALLBACK_VIDEOS = [
+    { id: "ASEYVgCY1YM", title: "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch", published: "2026-10-20T13:00:15+00:00" },
+    { id: "_dog0tGGiF8", title: "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity | THE RUNDOWN", published: "2026-10-16T13:00:32+00:00" },
+  ];
+  const $ = id => document.getElementById(id);
+  const fmtDate = s => s ? new Date(s).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
+  const showName = t => /rundown/i.test(t) ? "The Rundown" : /30 minutes/i.test(t) ? "30 Minutes" : /ladies who launch/i.test(t) ? "Ladies Who Launch" : "";
+
+  /* ---------- Latest video ---------- */
+  let videos = [], cur = 0;
+  function showVideo(i, play){
+    cur = i; const v = videos[i];
+    const show = showName(v.title);
+    $("vtag").textContent = i === 0 ? (show ? "Latest · " + show : "Latest episode") : (show || "Recent episode");
+    $("vtitle").textContent = v.title;
+    const pl = $("vplayer");
+    if (play) {
+      const f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+      f.title = v.title; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+      pl.replaceChildren(f);
+    } else {
+      // Thumbnail first, so the page stays fast; the player loads on click.
+      const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Play: " + v.title);
+      const img = document.createElement("img"); img.alt = "";
+      img.src = "https://i.ytimg.com/vi/" + v.id + "/maxresdefault.jpg";
+      img.onerror = () => { img.onerror = null; img.src = "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg"; };
+      const p = document.createElement("span"); p.className = "vplay";
+      p.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l15 9-15 9z" fill="#fff"/></svg>';
+      b.append(img, p); b.addEventListener("click", () => showVideo(cur, true));
+      pl.replaceChildren(b);
+    }
+    [...$("vlist").children].forEach(li => li.classList.toggle("on", +li.dataset.i === i));
+  }
+  function renderVideos(list){
+    videos = list;
+    if (!videos.length) { $("vtitle").textContent = "Watch ADSN on YouTube"; return; }
+    const ul = $("vlist"); ul.replaceChildren();
+    videos.forEach((v, i) => {
+      const li = document.createElement("li"); li.dataset.i = i;
+      const b = document.createElement("button"); b.type = "button";
+      const img = document.createElement("img"); img.src = "https://i.ytimg.com/vi/" + v.id + "/mqdefault.jpg"; img.alt = ""; img.loading = "lazy";
+      const t = document.createElement("div");
+      const tt = document.createElement("b"); tt.textContent = v.title;
+      const d = document.createElement("small"); d.textContent = (i === 0 ? "Newest · " : "") + fmtDate(v.published);
+      t.append(tt, d); b.append(img, t);
+      b.addEventListener("click", () => { showVideo(i, true); $("latest").scrollIntoView({ behavior: "smooth", block: "start" }); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    $("episodes").hidden = videos.length < 2;
+    showVideo(0, false);
+  }
+  fetch("/latest.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => renderVideos(d.videos && d.videos.length ? d.videos : FALLBACK_VIDEOS))
+    .catch(() => renderVideos(FALLBACK_VIDEOS));
+
+  /* ---------- Sponsor email ---------- */
+  // A ready-to-fill draft, so the details Daniel needs are already listed.
+  $("sponsorMail").href = "mailto:daniel@adsnventures.com?subject=" + encodeURIComponent("Sponsoring ADSN") + "&body=" + encodeURIComponent(
+    "Hi Daniel,\n\nCompany:\nWhat we're promoting:\nInterested in (episode sponsorship, on-set placement, newsletter ad):\nRough budget:\nTiming:\n\n");
+})();
+</script>
+</body>
+</html>
