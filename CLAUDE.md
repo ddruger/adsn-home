@@ -21,6 +21,7 @@ The page started as `home.html` in the private `adsn-auction-site` project (Verc
 
 - Newsletter forms: every `.nl-form` slot (hero and the newsletter card; the nav Subscribe and network card link to `#newsletter`) gets beehiiv's v3 loader script with `BEEHIIV_FORM_ID` (form `fd0a0f67-9558-4ea3-8ab6-b22f127ab1c7`, from Daniel). The loader draws a 47px "slim" email + Subscribe iframe a few seconds after load; its colors (blue button) are set in beehiiv, not here. Empty ID falls back to a Subscribe button. `attribution.js` is also in the head (Daniel added it).
 
+- Top menu: Network · Newsletter · Sponsor · Ventures (opens adsnventures.com in a new tab) · Subscribe. Only Subscribe shows on phones.
 - Contact: daniel@adsnventures.com. Instagram is @adsn.ig (Daniel confirmed; the old Netlify site linked @adsnonig).
 - X and LinkedIn feed embeds were tried and dropped: X blocks embeds for signed-out visitors and LinkedIn has no official feed embed.
 - The brief's "By the numbers" stats were removed at Daniel's request. The newsletter is described as 4,800+ / 4.8K subscribers.
