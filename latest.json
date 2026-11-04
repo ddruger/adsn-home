@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "_Vpc4k1oJXw",
+      "title": "SPECIAL: ADSN + Unharnessed | Muse, AI Shopping, and the Future of Ads",
+      "published": "2026-11-04T13:30:10+00:00"
+    },
+    {
       "id": "fDdGINk3q7A",
       "title": "Netflix's Ad Strategy and Why Vibe Coding May Not Kill SaaS | ADSN Rundown",
       "published": "2026-10-27T12:30:09+00:00"
@@ -14,11 +19,6 @@
       "id": "ASEYVgCY1YM",
       "title": "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch",
       "published": "2026-10-20T13:00:15+00:00"
-    },
-    {
-      "id": "_dog0tGGiF8",
-      "title": "Dorm Room Ads, Consumer AI Economics, and Apple's Big Opportunity  | THE RUNDOWN",
-      "published": "2026-10-16T13:00:32+00:00"
     }
   ],
   "shows": {
