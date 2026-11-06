@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "LO40HxVIx7Y",
+      "title": "X's New Product Chapter, YouTube's Moat, and Creator Pay | ADSN Rundown",
+      "published": "2026-11-06T14:30:03+00:00"
+    },
+    {
       "id": "_Vpc4k1oJXw",
       "title": "SPECIAL: ADSN + Unharnessed | Muse, AI Shopping, and the Future of Ads",
       "published": "2026-11-04T13:30:10+00:00"
@@ -14,18 +19,13 @@
       "id": "6Aoka2NcmGs",
       "title": "Will Shopping Agents Break Retail Media? ft. Ari Paparo | 30 Minutes",
       "published": "2026-10-22T13:00:03+00:00"
-    },
-    {
-      "id": "ASEYVgCY1YM",
-      "title": "Run-on-Ones, Career Advisors, and Unlimited PTO | Ladies Who Launch",
-      "published": "2026-10-20T13:00:15+00:00"
     }
   ],
   "shows": {
     "rundown": {
-      "id": "fDdGINk3q7A",
-      "title": "Netflix's Ad Strategy and Why Vibe Coding May Not Kill SaaS | ADSN Rundown",
-      "published": "2026-10-27T12:30:09+00:00"
+      "id": "LO40HxVIx7Y",
+      "title": "X's New Product Chapter, YouTube's Moat, and Creator Pay | ADSN Rundown",
+      "published": "2026-11-06T14:30:03+00:00"
     },
     "ladies": {
       "id": "ASEYVgCY1YM",
